@@ -35,7 +35,7 @@ struct Character: Decodable {
     Name: \(name)
     Status: \(status)
     Species: \(species)
-    Type: \(type)
+    Type: \(type.isEmpty ? "Ordinary": type)
     Gender: \(gender)
     Origin: \(origin.name)
     Location: \(location.name)

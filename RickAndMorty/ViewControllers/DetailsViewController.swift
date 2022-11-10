@@ -15,13 +15,28 @@ class DetailsViewController: UIViewController {
     // MARK: Public Properties
     var character: Character!
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     // MARK: VC Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = character?.name
-        fetchImage()
         characterInfoLb.text = character.info
         characterImg.layer.cornerRadius = characterImg.frame.width / 2
+        showSpinner(in: characterImg)
+        fetchImage()
+    }
+    
+    // MARK: Private Properties
+    
+    private func showSpinner(in view: UIView) {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        
+        view.addSubview(activityIndicator)
     }
     
     // MARK: Networking
@@ -30,6 +45,7 @@ class DetailsViewController: UIViewController {
             switch result {
             case .success(let imageData):
                 self.characterImg.image = UIImage(data: imageData)
+                self.activityIndicator.stopAnimating()
             case .failure(let error):
                 print(error)
             }

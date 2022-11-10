@@ -48,23 +48,6 @@ class NetworkManager {
             }
         }
     }
-    //    func fetch<T: Decodable>() {
-    //        guard let url = URL(string: charactersDataUrl) else { return }
-    //
-    //        URLSession.shared.dataTask(with: url) { data, _, error in
-    //            guard let data = data else {
-    //                print(error?.localizedDescription ?? "No error description")
-    //                return
-    //            }
-    //            do {
-    //                let characters = try JSONDecoder().decode(APIResponse.self, from: data)
-    //                print(characters)
-    //            } catch let error {
-    //                print(error)
-    //            }
-    //        }.resume()
-    //    }
-    
 }
 
 

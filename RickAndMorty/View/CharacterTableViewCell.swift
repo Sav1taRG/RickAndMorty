@@ -14,6 +14,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     func configure(with character: Character?) {
         characterNameLB.text = character?.name
+        characterImg.layer.cornerRadius = characterImg.frame.width / 2
         
         NetworkManager.shared.fetchImage(from: character?.image) {
             [weak self] result in

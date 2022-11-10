@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Characters-->
         <scene sceneID="NYK-Y6-FVM">
             <objects>
                 <tableViewController id="YMm-m9-Ayh" customClass="CharactersTableViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,26 +25,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="q6j-Lq-zga">
-                                            <rect key="frame" x="16" y="0.0" width="288" height="50"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-Lh-PsP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwi-cx-sLG">
-                                                    <rect key="frame" x="66" y="15" width="222" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwi-cx-sLG">
+                                            <rect key="frame" x="84" y="15" width="220" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-Lh-PsP">
+                                            <rect key="frame" x="16" y="-1" width="52" height="52"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="52" id="4u6-7w-q8J"/>
+                                                <constraint firstAttribute="width" constant="52" id="idF-TS-9BB"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="q6j-Lq-zga" firstAttribute="leading" secondItem="BUh-nv-qNC" secondAttribute="leading" constant="16" id="JLI-iZ-aBV"/>
-                                        <constraint firstAttribute="trailing" secondItem="q6j-Lq-zga" secondAttribute="trailing" constant="16" id="Td8-1a-g0q"/>
-                                        <constraint firstItem="q6j-Lq-zga" firstAttribute="centerX" secondItem="BUh-nv-qNC" secondAttribute="centerX" id="lZF-SD-YYa"/>
-                                        <constraint firstItem="q6j-Lq-zga" firstAttribute="centerY" secondItem="BUh-nv-qNC" secondAttribute="centerY" id="oLR-OA-w6Z"/>
+                                        <constraint firstItem="bwi-cx-sLG" firstAttribute="centerY" secondItem="BUh-nv-qNC" secondAttribute="centerY" id="E1n-SL-2FI"/>
+                                        <constraint firstItem="bwi-cx-sLG" firstAttribute="leading" secondItem="BF7-Lh-PsP" secondAttribute="trailing" constant="16" id="GI1-Pg-y2P"/>
+                                        <constraint firstItem="BF7-Lh-PsP" firstAttribute="leading" secondItem="BUh-nv-qNC" secondAttribute="leading" constant="16" id="R4t-FA-STA"/>
+                                        <constraint firstAttribute="trailing" secondItem="bwi-cx-sLG" secondAttribute="trailing" constant="16" id="TFf-Sl-vhC"/>
+                                        <constraint firstItem="BF7-Lh-PsP" firstAttribute="centerY" secondItem="BUh-nv-qNC" secondAttribute="centerY" id="Trp-fC-JqZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -59,11 +59,11 @@
                             <outlet property="delegate" destination="YMm-m9-Ayh" id="ReD-C2-OSH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="E07-7i-bIS"/>
+                    <navigationItem key="navigationItem" title="Characters" id="E07-7i-bIS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXl-O2-hZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270.76923076923077" y="-121.56398104265402"/>
+            <point key="canvasLocation" x="270" y="-122.53521126760563"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="EVp-Gd-Qph">
@@ -98,6 +98,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ymd-z1-fVf"/>
+                    <connections>
+                        <outlet property="characterImg" destination="ipm-Mr-U7e" id="Aqc-2q-iZE"/>
+                        <outlet property="characterInfoLb" destination="Kxq-Og-AUg" id="Txy-3O-Zoc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wY9-Gf-lpv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

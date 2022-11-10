@@ -9,12 +9,29 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    @IBOutlet var characterImg: UIImageView!
+    @IBOutlet var characterInfoLb: UILabel!
+   
+    var character: Character?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = character?.name
+        fetchImage()
+        characterInfoLb.text = character?.info
+        characterImg.layer.cornerRadius = characterImg.frame.width / 2
     }
     
-
+    private func fetchImage() {
+        NetworkManager.shared.fetchImage(from: self.character?.image) { result in
+            switch result {
+            case .success(let imageData):
+                self.characterImg.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

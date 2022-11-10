@@ -54,6 +54,11 @@ class CharactersTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        
+        let character = apiResponse?.results[indexPath.row]
+        guard let detailsVC = segue.destination as? DetailsViewController else { return }
+        detailsVC.character = character
         
     }
     

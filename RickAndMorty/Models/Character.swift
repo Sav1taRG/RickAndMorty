@@ -29,7 +29,20 @@ struct Character: Decodable {
     let image: String
     let episode: [String]
     let created: String
+    
+    var info: String {
+    """
+    Name: \(name)
+    Status: \(status)
+    Species: \(species)
+    Type: \(type)
+    Gender: \(gender)
+    Origin: \(origin.name)
+    Location: \(location.name)
+    """
+    }
 }
+
 
 struct Origin: Decodable {
     let name: String

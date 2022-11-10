@@ -8,12 +8,13 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    // MARK: IB Outlets
     @IBOutlet var characterImg: UIImageView!
     @IBOutlet var characterInfoLb: UILabel!
-   
+    
     var character: Character!
     
+    // MARK: VC Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = character?.name
@@ -22,6 +23,7 @@ class DetailsViewController: UIViewController {
         characterImg.layer.cornerRadius = characterImg.frame.width / 2
     }
     
+    // MARK: Networking
     private func fetchImage() {
         NetworkManager.shared.fetchImage(from: self.character.image) { result in
             switch result {
@@ -32,22 +34,4 @@ class DetailsViewController: UIViewController {
             }
         }
     }
-    
-//    private func formatDate() -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/yy"
-//        guard let date = dateFormatter.date(from: character.created) else { return "Unknown" }
-//        let createdDate = dateFormatter.string(from: date)
-//        return createdDate
-//    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

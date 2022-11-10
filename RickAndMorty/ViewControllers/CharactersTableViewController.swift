@@ -8,9 +8,10 @@
 import UIKit
 
 class CharactersTableViewController: UITableViewController {
-    
+    // MARK: Private Properties
     private var apiResponse: APIResponse?
     
+    // MARK: VC Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 55
@@ -18,7 +19,6 @@ class CharactersTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         apiResponse?.results.count ?? 0
     }
@@ -36,6 +36,7 @@ class CharactersTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: Networking
     private func fetchData(from url: String) {
         NetworkManager.shared.fetch(APIResponse.self, from: url) { [weak self] result in
             switch result {
@@ -48,9 +49,7 @@ class CharactersTableViewController: UITableViewController {
         }
     }
     
-    
     // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
@@ -59,5 +58,4 @@ class CharactersTableViewController: UITableViewController {
         detailsVC.character = character
         
     }
-    
 }

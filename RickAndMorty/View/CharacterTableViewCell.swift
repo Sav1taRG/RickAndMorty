@@ -8,7 +8,7 @@
 import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
-    
+    // MARK: IB Outlets
     @IBOutlet weak var characterImg: UIImageView!
     @IBOutlet weak var characterNameLB: UILabel!
     

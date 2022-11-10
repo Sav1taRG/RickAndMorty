@@ -50,7 +50,6 @@ class NetworkManager {
     }
 }
 
-
 enum NetworkError: Error {
     case brokenURL
     case noData

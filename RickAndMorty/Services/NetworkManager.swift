@@ -12,26 +12,26 @@ class NetworkManager {
     
     private init() {}
     
-    func fetch<T: Decodable>(_ type: T.Type, from url: String?, with comletion:
+    func fetch<T: Decodable>(_ type: T.Type, from url: String?, with completion:
                              @escaping(Result<T, NetworkError>) -> Void) {
         guard let apiUrl = url, let url = URL(string: apiUrl) else {
-            comletion(.failure(.brokenURL))
+            completion(.failure(.brokenURL))
             return
         }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                comletion(.failure(.noData))
+                completion(.failure(.noData))
                 print(error?.localizedDescription ?? "")
                 return
             }
             do {
                 let type = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {
-                    comletion(.success(type))
+                    completion(.success(type))
                 }
             } catch {
-                comletion(.failure(.failedToParse))
+                completion(.failure(.failedToGetData))
             }
         }.resume()
     }
@@ -39,7 +39,10 @@ class NetworkManager {
     func fetchImage(from url: String?, completion: @escaping(Result<Data,NetworkError>) -> Void) {
         guard let url = URL(string: url ?? "") else { return }
         DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: url) else { completion(.failure(.failedToParse)) }
+            guard let imageData = try? Data(contentsOf: url) else {
+                completion(.failure(.failedToGetData))
+                return
+            }
             DispatchQueue.main.async {
                 completion(.success(imageData))
             }
@@ -68,5 +71,5 @@ class NetworkManager {
 enum NetworkError: Error {
     case brokenURL
     case noData
-    case failedToParse
+    case failedToGetData
 }

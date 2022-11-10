@@ -12,6 +12,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet var characterImg: UIImageView!
     @IBOutlet var characterInfoLb: UILabel!
     
+    // MARK: Public Properties
     var character: Character!
     
     // MARK: VC Lifecycle Methods

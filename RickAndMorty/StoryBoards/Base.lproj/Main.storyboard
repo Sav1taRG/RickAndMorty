@@ -74,14 +74,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ipm-Mr-U7e">
-                                <rect key="frame" x="40" y="64" width="240" height="240"/>
+                                <rect key="frame" x="35" y="64" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="G2s-yM-Dn9"/>
-                                    <constraint firstAttribute="width" constant="240" id="qXk-LC-YEC"/>
+                                    <constraint firstAttribute="height" constant="250" id="G2s-yM-Dn9"/>
+                                    <constraint firstAttribute="width" constant="250" id="qXk-LC-YEC"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dlksjflsdkngsldgkjnsdkgjnsdg,sndg,msbdkgjbdnskgjbsdkgjbsdg skdbgksjdnglskdnvlsdk d kkdslkfsdkvmsdklv sldk lskd" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxq-Og-AUg">
-                                <rect key="frame" x="16" y="344" width="288" height="81.5"/>
+                                <rect key="frame" x="16" y="354" width="288" height="81.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

@@ -8,6 +8,7 @@
 import UIKit
 
 class CharactersTableViewController: UITableViewController {
+    
     // MARK: Private Properties
     private var apiResponse: APIResponse?
     
@@ -35,9 +36,16 @@ class CharactersTableViewController: UITableViewController {
         cell.configure(with: character)
         return cell
     }
+    // MARK: IB Actions
+    @IBAction func navButtonTapped(_ sender: UIButton) {
+        sender.tag == 1
+        ? fetchData(from: apiResponse?.info.next)
+        : fetchData(from: apiResponse?.info.prev)
+
+    }
     
     // MARK: Networking
-    private func fetchData(from url: String) {
+    private func fetchData(from url: String?) {
         NetworkManager.shared.fetch(APIResponse.self, from: url) { [weak self] result in
             switch result {
             case .success(let apiResponse):

@@ -38,21 +38,42 @@ class CharactersTableViewController: UITableViewController {
     }
     // MARK: IB Actions
     @IBAction func navButtonTapped(_ sender: UIButton) {
-        sender.tag == 1
-        ? fetchData(from: apiResponse?.info.next)
-        : fetchData(from: apiResponse?.info.prev)
-
+        if sender.tag == 1 {
+            // Next button
+            guard let nextUrl = apiResponse?.info.next else {
+                print("No more pages to load. Current API response: \(String(describing: apiResponse))")
+                return
+            }
+            print("Navigating to Next page: \(nextUrl)")
+            fetchData(from: nextUrl)
+        } else {
+            // Prev button
+            guard let prevUrl = apiResponse?.info.prev else {
+                print("This is the first page. Current API response: \(String(describing: apiResponse))")
+                return
+            }
+            print("Navigating to Previous page: \(prevUrl)")
+            fetchData(from: prevUrl)
+        }
     }
     
     // MARK: Networking
     private func fetchData(from url: String?) {
-        NetworkManager.shared.fetch(APIResponse.self, from: url) { [weak self] result in
+        guard let urlString = url else {
+            print("Invalid URL.")
+            return
+        }
+        
+        NetworkManager.shared.fetch(APIResponse.self, from: urlString) { [weak self] result in
             switch result {
             case .success(let apiResponse):
+                print("API Response received: \(apiResponse)")
                 self?.apiResponse = apiResponse
-                self?.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             case .failure(let error):
-                print(error)
+                print("Failed to fetch data:", error)
             }
         }
     }
